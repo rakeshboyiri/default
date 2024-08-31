@@ -35,6 +35,9 @@ function Footer({}) {
             </ul>
           </div>
         </div>
+        <div className="bottom-bar">
+          <p>&copy; 2024 e-PMSSS. All Rights Reserved</p>
+        </div>
       </div>
      </footer>
     </>
