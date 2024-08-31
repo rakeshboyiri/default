@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import mongoose from "mongoose";
 
 //connection import
 import createConnection from "./DB/connect.js";
@@ -35,16 +36,6 @@ app.use("/api/v1/user", userRouter);
 app.use(errorHandler);
 
 //connection with the database
-createConnection(process.env.MONGO_URI)
-  .then(() => {
-    app.listen(port, () => {
-      console.log(`Example app listening on port ${port}`);
-    });
-  })
-  .catch((error) => {
-    console.error(
-      "Failed to start the server due to MongoDB connection error:",
-      error
-    );
-    process.exit(1);
-  });
+mongoose.connect('mongodb://localhost:27017/authentication_app')
+.then(()=> console.log('Connected to MongoDB'))
+.catch((error) => console.error("Failed to connect to MongoDB", error));
