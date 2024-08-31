@@ -27,6 +27,17 @@ app.use("/api/v1/auth", authRouter);
 app.use(errorHandler);
 
 //connection with the database
-mongoose.connect('mongodb://localhost:27017/authentication_app')
-.then(()=> console.log('Connected to MongoDB'))
-.catch((error) => console.error("Failed to connect to MongoDB", error));
+//connection with the database
+createConnection(process.env.MONGO_URI)
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`Example app listening on port ${port}`);
+    });
+  })
+  .catch((error) => {
+    console.error(
+      "Failed to start the server due to MongoDB connection error:",
+      error
+    );
+    process.exit(1);
+  });
