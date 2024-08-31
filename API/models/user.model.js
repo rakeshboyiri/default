@@ -13,6 +13,10 @@ const userSchema = new Schema({
   userName: {
     type: String,
   },
+  Phone: {
+    type: Number,
+    required: [true, "Please provide your Phone number"],
+  },
   email: {
     type: String,
     minLength: 10,
