@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import Spin from "../utilities/Spin";
+import Spin from "../utility/Spin";
 
 function Signup() {
   const {
