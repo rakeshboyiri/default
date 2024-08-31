@@ -74,6 +74,22 @@ function Signup() {
             {errMsg && <span className="text-xs text-theme">{errMsg}</span>}
           </div>
           <div>
+            <label className="block text-gray-700">Phone no.</label>
+            <input
+              type="tel"
+              className="mt-1 px-4 py-2 border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-[#5F0F40]"
+              placeholder="Your Phone Number"
+              {...register("phone", { required: true, pattern: /^[0-9]{10}$/ })}
+            />
+            {errors.phone && (
+              <span className="text-xs text-theme">
+                Please enter a valid phone number
+              </span>
+            )}
+            {errMsg && <span className="text-xs text-theme">{errMsg}</span>}
+          </div>
+
+          <div>
             <label className="block text-gray-700">Password</label>
             <input
               type="password"
