@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 //define endpoints here
-app.use("/api/v1/user", authRouter);
+app.use("/api/v1/auth", authRouter);
 
 //should be placed at the bottom of index js
 app.use(errorHandler);
