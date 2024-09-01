@@ -8,7 +8,7 @@ import createConnection from "./DB/connect.js";
 //import error-handeler
 import { errorHandler } from "./middleware/errorHandeler.js";
 
-import userRouter from "../API/routes/user.route.js"
+import authRouter from "./routes/auth.route.js";
 
 dotenv.config();
 
@@ -20,20 +20,12 @@ app.use(express.json());
 app.use(cookieParser());
 
 //define endpoints here
-app.use("/api/v1/user", userRouter); 
-
-
-
-
-
-
-
-
-
+app.use("/api/v1/auth", authRouter);
 
 //should be placed at the bottom of index js
 app.use(errorHandler);
 
+//connection with the database
 //connection with the database
 createConnection(process.env.MONGO_URI)
   .then(() => {
