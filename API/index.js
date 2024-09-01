@@ -26,6 +26,7 @@ app.use("/api/v1/auth", authRouter);
 app.use(errorHandler);
 
 //connection with the database
+//connection with the database
 createConnection(process.env.MONGO_URI)
   .then(() => {
     app.listen(port, () => {
