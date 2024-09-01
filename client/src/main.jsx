@@ -18,6 +18,9 @@ import Signup from "./components/pages/Signup.jsx";
 import Dashboard from "./components/dashboard/Dashboard.jsx";
 import FreshFormFillup from "./components/pages/FreshFormFillup.jsx";
 import Signin from "./components/pages/Signin.jsx";
+import Step1 from "./components/Form/Step1.jsx";
+import Step2 from "./components/Form/Step2.jsx";
+import Step3 from "./components/Form/Step3.jsx";
 
 // Create routes with user data
 const router = createBrowserRouter(
@@ -26,7 +29,11 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="signup" element={<Signup />} />
       <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/fresh-form" element={<FreshFormFillup />} />
+      <Route path="/saf" element={<FreshFormFillup />} >
+      <Route path="/saf/step1" element={<Step1 />} />
+      <Route path="/saf/step2" element={<Step2 />} />
+      <Route path="/saf/step3" element={<Step3 />} />
+      </Route>
       <Route path="signin" element={<Signin />} />
     </Route>
   )

@@ -1,7 +1,7 @@
-// Dashboard.jsx
 import React from "react";
 import { User, Settings, CreditCard, HelpCircle } from "lucide-react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Dashboard = ({}) => {
   const { currUser } = useSelector((state) => state.user);
@@ -13,30 +13,30 @@ const Dashboard = ({}) => {
           <h2 className="text-2xl font-semibold text-gray-800">Dashboard</h2>
         </div>
         <nav className="mt-6">
-          <a
+          <Link
             className="flex items-center py-2 px-4 bg-gray-200 text-gray-700 border-r-4 border-gray-700"
             href="#"
           >
             <User className="mr-3" /> Status Bar
-          </a>
-          <a
+          </Link>
+          <Link
             className="flex items-center mt-2 py-2 px-4 text-gray-600 hover:bg-gray-200 hover:text-gray-700 transition-colors duration-200"
             href="#"
           >
             <Settings className="mr-3" /> Eligibility
-          </a>
-          <a
+          </Link>
+          <Link
             className="flex items-center mt-2 py-2 px-4 text-gray-600 hover:bg-gray-200 hover:text-gray-700 transition-colors duration-200"
             href="#"
           >
             <CreditCard className="mr-3" /> Continue to where left
-          </a>
-          <a
+          </Link>
+          <Link
             className="flex items-center mt-2 py-2 px-4 text-gray-600 hover:bg-gray-200 hover:text-gray-700 transition-colors duration-200"
-            href="/fresh-form"
+            to="/saf"
           >
             <HelpCircle className="mr-3" /> Fresh Form Fillup
-          </a>
+          </Link>
         </nav>
       </div>
 
