@@ -9,6 +9,7 @@ import createConnection from "./DB/connect.js";
 import { errorHandler } from "./middleware/errorHandeler.js";
 
 import authRouter from "./routes/auth.route.js";
+import userRouter from "./routes/user.route.js"
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(cookieParser());
 
 //define endpoints here
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/user", userRouter);
 
 //should be placed at the bottom of index js
 app.use(errorHandler);

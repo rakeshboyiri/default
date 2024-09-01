@@ -1,16 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
-function Step1({}) {
+function Step1() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const [loading, setLoading] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
+
+  // Make the onSubmit function async
+  const onSubmit = async (data) => {
+    setLoading(true);
+    setErrMsg(""); // Clear any previous error message
+
+    try {
+      const res = await fetch(`/api/v1/user/step1`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      // Check if the response status is not 2xx
+      if (!res.ok) {
+        const errorData = await res.json();
+        setErrMsg(errorData.message || "Something went wrong");
+        setLoading(false);
+        return;
+      }
+
+      const responseData = await res.json();
+      setLoading(false);
+      navigate(`/saf/step2`);
+    } catch (err) {
+      setErrMsg("An error occurred. Please try again later.");
+      setLoading(false);
+    }
   };
+
   return (
     <>
       <div className="mt-8 max-w-3xl mx-auto px-4 py-6 bg-gray-50 rounded-lg shadow-lg">
@@ -18,10 +51,12 @@ function Step1({}) {
         <p className="text-lg text-gray-600 mb-6">
           Please fill out the form below to complete your application.
         </p>
+        {errMsg && <p className="text-red-600 text-center mb-4">{errMsg}</p>}
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="bg-white p-8 shadow-md rounded-lg"
         >
+          {/* Name Input */}
           <div className="mb-6">
             <label
               className="block text-gray-700 text-sm font-medium mb-2"
@@ -40,24 +75,8 @@ function Step1({}) {
               <p className="text-red-600 text-sm mt-1">Name is required.</p>
             )}
           </div>
-          <div className="mb-6">
-            <label
-              className="block text-gray-700 text-sm font-medium mb-2"
-              htmlFor="email"
-            >
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              {...register("email", { required: true })}
-              className="shadow-sm appearance-none border border-gray-300 rounded w-full py-3 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter Email address"
-            />
-            {errors.email && (
-              <p className="text-red-600 text-sm mt-1">Email is required.</p>
-            )}
-          </div>
+
+          {/* Phone Input */}
           <div className="mb-6">
             <label
               className="block text-gray-700 text-sm font-medium mb-2"
@@ -78,7 +97,10 @@ function Step1({}) {
               </p>
             )}
           </div>
+
+          {/* Parent Info Inputs */}
           <div className="grid grid-cols-1 gap-6 mb-6 md:grid-cols-2">
+            {/* Father's Name Input */}
             <div>
               <label
                 className="block text-gray-700 text-sm font-medium mb-2"
@@ -99,6 +121,8 @@ function Step1({}) {
                 </p>
               )}
             </div>
+
+            {/* Mother's Name Input */}
             <div>
               <label
                 className="block text-gray-700 text-sm font-medium mb-2"
@@ -120,6 +144,8 @@ function Step1({}) {
               )}
             </div>
           </div>
+
+          {/* Parent's Phone Number Input */}
           <div className="mb-6">
             <label
               className="block text-gray-700 text-sm font-medium mb-2"
@@ -140,6 +166,8 @@ function Step1({}) {
               </p>
             )}
           </div>
+
+          {/* Parent's Address Input */}
           <div className="mb-6">
             <label
               className="block text-gray-700 text-sm font-medium mb-2"
@@ -160,7 +188,9 @@ function Step1({}) {
               </p>
             )}
           </div>
-          <div className="mb-6">
+
+          {/* Profile Photo Input */}
+          {/* <div className="mb-6">
             <label
               className="block text-gray-700 text-sm font-medium mb-2"
               htmlFor="profilePhoto"
@@ -178,7 +208,9 @@ function Step1({}) {
                 Profile photo upload is required.
               </p>
             )}
-          </div>
+          </div> */}
+
+          {/* Additional Comments Input */}
           <div className="mb-6">
             <label
               className="block text-gray-700 text-sm font-medium mb-2"
@@ -194,11 +226,16 @@ function Step1({}) {
               placeholder="Any additional information or requests"
             ></textarea>
           </div>
+
+          {/* Submit Button */}
           <button
             type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
+            className={`bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={loading}
           >
-            Submit
+            {loading ? "Submitting..." : "Submit"}
           </button>
         </form>
       </div>
