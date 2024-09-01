@@ -15,17 +15,9 @@ import store, { persistor } from "./components/redux/store.js";
 import App from "./components/routes/App.jsx";
 import Home from "./components/pages/Home.jsx";
 import Signup from "./components/pages/Signup.jsx";
-import UserDashboard from "./Dashboard/dashboard.jsx";
-import FreshFormFillup from './components/pages/FreshFormFillup.jsx';
+import Dashboard from "./components/dashboard/Dashboard.jsx";
+import FreshFormFillup from "./components/pages/FreshFormFillup.jsx";
 import Signin from "./components/pages/Signin.jsx";
-
-// Define user data
-const user = {
-  name: '',
-  email: '',
-  userName: '',
-  phone: ''
-};
 
 // Create routes with user data
 const router = createBrowserRouter(
@@ -33,7 +25,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route index element={<Home />} />
       <Route path="signup" element={<Signup />} />
-      <Route path="/dashboard" element={<UserDashboard user={user} />} />
+      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/fresh-form" element={<FreshFormFillup />} />
       <Route path="signin" element={<Signin />} />
     </Route>
