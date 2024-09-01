@@ -13,6 +13,10 @@
   "description": "",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+<<<<<<< HEAD
+    "concurrently": "^8.2.2",
+=======
+>>>>>>> 93e64957788e88fa9509cec1f7be91723d19cb76
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
@@ -21,5 +25,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.5.2",
     "nodemon": "^3.1.4"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
   }
 }
