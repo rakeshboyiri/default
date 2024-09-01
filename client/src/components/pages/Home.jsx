@@ -72,7 +72,7 @@ const HomePage = () => {
           <h3 className="text-2xl font-semibold mb-4 text-black">Student Login</h3>
           <p className="text-black mb-4">Access your student account to manage your scholarship applications and view your status. Stay up-to-date with your scholarship journey and track all your important updates.</p>
           <Link 
-            to="/student-login" 
+            to="/signin" 
             className="bg-yellow-200 text-black py-3 px-6 rounded-full text-lg font-semibold shadow-md hover:bg-yellow-300 transition ease-in-out duration-300"
           >
             Login
@@ -87,7 +87,7 @@ const HomePage = () => {
           <h3 className="text-2xl font-semibold mb-4 text-black">Officer Login</h3>
           <p className="text-black mb-4">Access the officer's dashboard to review applications and manage scholarship details. Efficiently handle and oversee the scholarship process with ease.</p>
           <Link 
-            to="/officer-login" 
+            to="/officerLogin" 
             className="bg-yellow-200 text-black py-3 px-6 rounded-full text-lg font-semibold shadow-md hover:bg-yellow-300 transition ease-in-out duration-300"
           >
             Login
