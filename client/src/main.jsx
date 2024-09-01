@@ -30,7 +30,7 @@ const router = createBrowserRouter(
       <Route path="signup" element={<Signup />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/saf" element={<FreshFormFillup />} >
-      <Route path="/saf/step1" element={<Step1 />} />
+      <Route index element={<Step1 />} />
       <Route path="/saf/step2" element={<Step2 />} />
       <Route path="/saf/step3" element={<Step3 />} />
       </Route>
