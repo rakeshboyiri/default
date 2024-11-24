@@ -18,7 +18,7 @@ export const verifyUserToken = (req, res, next) => {
     );
   }
 
-  jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user) => {
+  jwt.verify(token, "secret", (err, user) => {
     if (err) {
       return next(new UnauthError("Forbidden access", StatusCodes.FORBIDDEN));
     }

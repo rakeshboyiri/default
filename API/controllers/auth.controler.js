@@ -64,7 +64,7 @@ export const signin = async (req, res, next) => {
   // Remove password before sending the user object in the response
   validUser.password = undefined;
   //create token
-  const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET_KEY, {
+  const token = jwt.sign({ id: validUser._id }, "secret", {
     expiresIn: "30d",
   });
 
@@ -79,4 +79,3 @@ export const signin = async (req, res, next) => {
       validUser,
     });
 };
-

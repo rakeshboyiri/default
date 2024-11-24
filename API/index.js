@@ -29,7 +29,7 @@ app.use(errorHandler);
 
 //connection with the database
 //connection with the database
-createConnection(process.env.MONGO_URI)
+createConnection("mongodb+srv://admin2:admin123@cluster0.y0uqy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => {
     app.listen(port, () => {
       console.log(`Example app listening on port ${port}`);
